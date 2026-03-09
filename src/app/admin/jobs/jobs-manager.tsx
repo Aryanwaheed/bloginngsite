@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "../../../../../supabase/client";
+import { createClient } from "../../../../supabase/client";
 import { Plus, Pencil, Trash2, ToggleLeft, ToggleRight, X, Image as ImageIcon, Search } from "lucide-react";
 
 type Job = {
@@ -78,14 +78,25 @@ export default function JobsManager({ initialJobs }: { initialJobs: Job[] }) {
         .eq("id", editJob.id)
         .select()
         .single();
-      if (!error && data) setJobs((prev) => prev.map((j) => (j.id === data.id ? data : j)));
+      if (!error && data) {
+        setJobs((prev) => prev.map((j) => (j.id === data.id ? data : j)));
+        setModalOpen(false);
+      } else {
+        alert("Failed to update job. Check database permissions or try again.");
+        console.error(error);
+      }
     } else {
       const { data, error } = await supabase.from("jobs").insert(form).select().single();
-      if (!error && data) setJobs((prev) => [data, ...prev]);
+      if (!error && data) {
+        setJobs((prev) => [data, ...prev]);
+        setModalOpen(false);
+      } else {
+        alert("Failed to create job. Check database permissions or run the fix_rls_and_seed.sql script in Supabase.");
+        console.error(error);
+      }
     }
 
     setLoading(false);
-    setModalOpen(false);
   };
 
   const handleToggle = async (job: Job) => {

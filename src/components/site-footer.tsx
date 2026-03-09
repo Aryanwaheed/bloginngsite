@@ -22,7 +22,6 @@ export default function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/jobs" className="hover:text-white transition-colors">Find Jobs</Link></li>
               <li><Link href="/characters" className="hover:text-white transition-colors">AI Characters</Link></li>
-              <li><Link href="/admin" className="hover:text-white transition-colors">Admin Dashboard</Link></li>
             </ul>
           </div>
           <div>

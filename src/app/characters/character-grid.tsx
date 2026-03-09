@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 type Character = {
   id: string;
@@ -55,6 +56,7 @@ export default function CharacterGrid({ characters }: { characters: Character[] 
                 </p>
                 <Link
                   href={`/chat/${char.id}`}
+                  onClick={() => trackEvent("character_click", { character_id: char.id, character_name: char.name })}
                   className="inline-flex items-center gap-2 bg-[#1A56DB] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-700 transition-colors shadow-lg"
                 >
                   <MessageCircle className="w-4 h-4" />
@@ -72,6 +74,7 @@ export default function CharacterGrid({ characters }: { characters: Character[] 
             </div>
             <Link
               href={`/chat/${char.id}`}
+              onClick={() => trackEvent("character_click", { character_id: char.id, character_name: char.name })}
               className="text-xs font-semibold text-[#1A56DB] hover:underline flex items-center gap-1"
             >
               Chat <span className="text-base">→</span>

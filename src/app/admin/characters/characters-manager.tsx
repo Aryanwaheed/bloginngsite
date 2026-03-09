@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { createClient } from "../../../../../supabase/client";
+import { createClient } from "../../../../supabase/client";
 import { Plus, Pencil, Trash2, X, ToggleLeft, ToggleRight } from "lucide-react";
 
 type Character = {
@@ -68,14 +68,25 @@ export default function CharactersManager({ initialCharacters }: { initialCharac
         .eq("id", editChar.id)
         .select()
         .single();
-      if (!error && data) setCharacters((prev) => prev.map((c) => (c.id === data.id ? data : c)));
+      if (!error && data) {
+        setCharacters((prev) => prev.map((c) => (c.id === data.id ? data : c)));
+        setModalOpen(false);
+      } else {
+        alert("Failed to update character. Check database permissions or try again.");
+        console.error(error);
+      }
     } else {
       const { data, error } = await supabase.from("ai_characters").insert(form).select().single();
-      if (!error && data) setCharacters((prev) => [...prev, data]);
+      if (!error && data) {
+        setCharacters((prev) => [...prev, data]);
+        setModalOpen(false);
+      } else {
+        alert("Failed to create character. Check database permissions or run the fix_rls_and_seed.sql script in Supabase.");
+        console.error(error);
+      }
     }
 
     setLoading(false);
-    setModalOpen(false);
   };
 
   const handleToggle = async (char: Character) => {

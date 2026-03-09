@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { createClient } from "../../../../../supabase/client";
+import { createClient } from "../../../../supabase/client";
 import { LogOut, Settings } from "lucide-react";
+import SettingsForm from "./settings-form";
 
 export default function AdminSettingsPage() {
   const router = useRouter();
@@ -21,6 +22,7 @@ export default function AdminSettingsPage() {
       </div>
 
       <div className="space-y-4 max-w-2xl">
+        <SettingsForm />
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center">

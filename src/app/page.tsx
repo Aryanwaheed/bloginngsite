@@ -3,6 +3,7 @@ import Image from "next/image";
 import { createClient } from "../../supabase/server";
 import SiteNavbar from "@/components/site-navbar";
 import SiteFooter from "@/components/site-footer";
+import { TrackFindJobsClick, TrackCharacterSectionClick } from "@/components/track-clicks";
 import { Briefcase, Bot, MapPin, DollarSign, TrendingUp, Users, Star, ChevronRight, ArrowRight } from "lucide-react";
 
 export default async function Home() {
@@ -43,46 +44,64 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Link
-              href="/jobs"
-              className="group relative bg-white rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 border border-gray-100 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-blue-50 -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-100 transition-colors" />
-              <div className="relative">
-                <div className="w-14 h-14 bg-[#1A56DB] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
-                  <Briefcase className="w-7 h-7 text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <TrackFindJobsClick>
+              <Link
+                href="/jobs"
+                className="order-2 md:order-1 group relative bg-white rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 border border-gray-100 overflow-hidden block"
+              >
+                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-blue-50 -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-100 transition-colors" />
+                <div className="relative">
+                  <div className="w-14 h-14 bg-[#1A56DB] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
+                    <Briefcase className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-[#1C1917] mb-3">Find Jobs</h2>
+                  <div className="text-[#6B7280] mb-6 leading-relaxed block">
+                    Explore curated listings across cleaning, delivery, caregiving, trucking, office roles, and more.
+                  </div>
+                  <div className="flex items-center gap-2 text-[#1A56DB] font-semibold">
+                    Browse Jobs
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-                <h2 className="text-2xl font-bold text-[#1C1917] mb-3">Find Jobs</h2>
-                <p className="text-[#6B7280] mb-6 leading-relaxed">
-                  Explore curated listings across cleaning, delivery, caregiving, trucking, office roles, and more.
-                </p>
-                <div className="flex items-center gap-2 text-[#1A56DB] font-semibold">
-                  Browse Jobs
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </TrackFindJobsClick>
 
-            <Link
-              href="/characters"
-              className="group relative bg-[#1C1917] rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-amber-500/10 -translate-y-1/2 translate-x-1/2 group-hover:bg-amber-500/20 transition-colors" />
-              <div className="relative">
-                <div className="w-14 h-14 bg-[#F59E0B] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-200/40">
-                  <Bot className="w-7 h-7 text-white" />
+            <TrackCharacterSectionClick>
+              <Link
+                href="/characters"
+                className="order-1 md:order-2 group relative bg-[#1C1917] rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-1 overflow-hidden block"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src="/women-who-lead.png"
+                    alt="AI Characters Background"
+                    fill
+                    className="object-cover opacity-100 transition-opacity duration-300 mix-blend-normal grayscale-0"
+                  />
+                  {/* Dark gradient overlay moving bottom-to-top to make the text pop properly */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/80 via-[#000000]/30 to-transparent" />
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-3">AI Virtual Characters</h2>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Chat with unique AI personalities from around the world. Engaging, fun, and always available.
-                </p>
-                <div className="flex items-center gap-2 text-[#F59E0B] font-semibold">
-                  Meet Characters
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-amber-500/10 -translate-y-1/2 translate-x-1/2 group-hover:bg-amber-500/20 transition-colors z-0" />
+
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-[#F59E0B] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-200/40">
+                    <Bot className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-3 drop-shadow-sm">AI Virtual Girl
+                    Characters</h2>
+                  <div className="text-gray-300 mb-6 leading-relaxed font-medium drop-shadow-md block">
+                    Chat with unique AI personalities from around the world. Engaging, fun, and always available.
+                  </div>
+                  <div className="flex items-center gap-2 text-[#F59E0B] font-bold">
+                    Meet Characters
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </TrackCharacterSectionClick>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { createClient } from "../../../../supabase/server";
+import { createClient } from "../../../supabase/server";
 import SiteNavbar from "@/components/site-navbar";
 import SiteFooter from "@/components/site-footer";
 import CharacterGrid from "./character-grid";

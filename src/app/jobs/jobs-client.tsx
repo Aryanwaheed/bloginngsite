@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { createClient } from "../../../../supabase/client";
+import { createClient } from "../../../supabase/client";
 import { Search, MapPin, DollarSign, SlidersHorizontal } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 type Job = {
   id: string;
@@ -122,11 +123,10 @@ export default function JobsClient({ initialJobs }: { initialJobs: Job[] }) {
             <button
               key={cat}
               onClick={() => toggleCategory(cat)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                isActive
-                  ? "bg-[#1A56DB] text-white shadow-md shadow-blue-200"
-                  : "bg-white text-[#6B7280] border border-gray-200 hover:border-[#1A56DB] hover:text-[#1A56DB]"
-              }`}
+              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive
+                ? "bg-[#1A56DB] text-white shadow-md shadow-blue-200"
+                : "bg-white text-[#6B7280] border border-gray-200 hover:border-[#1A56DB] hover:text-[#1A56DB]"
+                }`}
             >
               {cat}
             </button>
@@ -156,10 +156,10 @@ export default function JobsClient({ initialJobs }: { initialJobs: Job[] }) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {jobs.map((job, index) => (
-            <>
+            <React.Fragment key={job.id}>
               <Link
-                key={job.id}
                 href={`/jobs/${job.id}`}
+                onClick={() => trackEvent("job_view", { job_id: job.id, job_title: job.title, category: job.category })}
                 className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-200 border border-gray-50 group"
               >
                 {job.image_url && (
@@ -201,7 +201,7 @@ export default function JobsClient({ initialJobs }: { initialJobs: Job[] }) {
                   <div className="text-[#6B7280] text-sm font-medium">📢 Advertisement Slot</div>
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       )}

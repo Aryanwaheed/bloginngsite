@@ -1,4 +1,4 @@
-import { createClient } from "../../../../../supabase/server";
+import { createClient } from "../../../../supabase/server";
 import CharactersManager from "./characters-manager";
 
 export default async function AdminCharactersPage() {

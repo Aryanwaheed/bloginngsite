@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createClient } from "../../../../../supabase/client";
+import { createClient } from "../../../../supabase/client";
 import { Megaphone, ToggleLeft, ToggleRight } from "lucide-react";
 
 type Ad = {

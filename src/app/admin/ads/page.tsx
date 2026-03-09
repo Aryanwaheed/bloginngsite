@@ -1,4 +1,4 @@
-import { createClient } from "../../../../../supabase/server";
+import { createClient } from "../../../../supabase/server";
 import AdsManager from "./ads-manager";
 
 export default async function AdminAdsPage() {

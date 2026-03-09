@@ -6,11 +6,12 @@ import { useState } from "react";
 import { createClient } from "../../../supabase/client";
 import {
   Briefcase, Users, Bot, Megaphone, Settings, LayoutDashboard,
-  Menu, X, LogOut, ChevronRight
+  Menu, X, LogOut, ChevronRight, BarChart2
 } from "lucide-react";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart2 },
   { href: "/admin/jobs", label: "Jobs", icon: Briefcase },
   { href: "/admin/applications", label: "Applications", icon: Users },
   { href: "/admin/characters", label: "AI Characters", icon: Bot },
@@ -54,11 +55,10 @@ export default function AdminSidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
-                  isActive
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${isActive
                     ? "bg-[#1A56DB] text-white"
                     : "text-gray-400 hover:bg-[#1F2937] hover:text-white"
-                }`}
+                  }`}
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />
                 {!collapsed && <span className="text-sm font-medium">{item.label}</span>}
@@ -86,9 +86,8 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex-1 flex flex-col items-center gap-1 py-2 text-xs transition-colors ${
-                isActive ? "text-[#1A56DB]" : "text-gray-500 hover:text-gray-300"
-              }`}
+              className={`flex-1 flex flex-col items-center gap-1 py-2 text-xs transition-colors ${isActive ? "text-[#1A56DB]" : "text-gray-500 hover:text-gray-300"
+                }`}
             >
               <item.icon className="w-5 h-5" />
               <span>{item.label.split(" ")[0]}</span>
