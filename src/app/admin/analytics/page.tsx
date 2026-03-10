@@ -21,21 +21,29 @@ export default async function AnalyticsPage() {
         supabase.from("analytics_events").select("id, event_type, page, created_at").order("created_at", { ascending: false }).limit(20),
     ]);
 
+    if (sessions.error) console.error("Admin Analytics: Fetch sessions error:", sessions.error);
+    if (events.error) console.error("Admin Analytics: Fetch events error:", events.error);
+    if (pageViews.error) console.error("Admin Analytics: Fetch page views error:", pageViews.error);
+    if (activeUsersRes.error) console.error("Admin Analytics: Fetch active users error:", activeUsersRes.error);
+
     const sessData = sessions.data || [];
     const evData = events.data || [];
     const pvData = pageViews.data || [];
 
-    // ── Build daily visitors ──
+    // ── Build daily visitors (Unique IPs per day) ──
     const dayMap: Record<string, Set<string>> = {};
     sessData.forEach(s => {
         const day = s.started_at?.slice(0, 10);
         if (!day) return;
         if (!dayMap[day]) dayMap[day] = new Set();
-        dayMap[day].add(s.session_id);
+        dayMap[day].add(s.ip_address || s.session_id);
     });
     const dailyVisitors = Object.entries(dayMap)
         .sort(([a], [b]) => a.localeCompare(b))
         .map(([date, set]) => ({ date: date.slice(5), visitors: set.size }));
+
+    // Total unique visitors (Overall)
+    const uniqueVisitorSet = new Set(sessData.map(s => s.ip_address || s.session_id));
 
     // ── Peak hours ──
     const hourMap: Record<number, number> = {};
@@ -101,7 +109,7 @@ export default async function AnalyticsPage() {
         : 0;
 
     const initialData = {
-        totalSessions: sessData.length,
+        totalSessions: uniqueVisitorSet.size,
         totalPageViews: pvData.length,
         activeUsers: activeUsersRes.count || 0,
         avgDuration,

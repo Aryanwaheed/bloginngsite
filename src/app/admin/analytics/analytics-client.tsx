@@ -51,7 +51,13 @@ export default function AnalyticsClient({ initialData }: { initialData: any }) {
             supabase.from("analytics_page_views").select("*").gte("created_at", fromISO),
         ]);
 
-        setData(processData(sessions.data || [], events.data || [], pageViews.data || [], initialData));
+        if (sessions.error) console.error("AnalyticsClient: Fetch sessions error:", sessions.error);
+        if (events.error) console.error("AnalyticsClient: Fetch events error:", events.error);
+        if (pageViews.error) console.error("AnalyticsClient: Fetch page views error:", pageViews.error);
+
+        if (!sessions.error && !events.error && !pageViews.error) {
+            setData(processData(sessions.data || [], events.data || [], pageViews.data || [], initialData));
+        }
     }, [initialData]);
 
     useEffect(() => {
@@ -318,13 +324,13 @@ export default function AnalyticsClient({ initialData }: { initialData: any }) {
 
 // ── Helper: process raw Supabase data into chart-friendly format ──
 function processData(sessions: any[], events: any[], pageViews: any[], base: any) {
-    // Daily visitors
+    // Daily visitors (Unique IPs per day)
     const dayMap: Record<string, Set<string>> = {};
     sessions.forEach(s => {
         const day = s.started_at?.slice(0, 10);
         if (!day) return;
         if (!dayMap[day]) dayMap[day] = new Set();
-        dayMap[day].add(s.session_id);
+        dayMap[day].add(s.ip_address || s.session_id);
     });
     const dailyVisitors = Object.entries(dayMap)
         .sort(([a], [b]) => a.localeCompare(b))
@@ -333,6 +339,9 @@ function processData(sessions: any[], events: any[], pageViews: any[], base: any
             date: date.slice(5),
             visitors: set.size,
         }));
+
+    // Total unique visitors (Overall)
+    const uniqueVisitorSet = new Set(sessions.map(s => s.ip_address || s.session_id));
 
     // Peak hours (using page views)
     const hourMap: Record<number, number> = {};
@@ -399,7 +408,7 @@ function processData(sessions: any[], events: any[], pageViews: any[], base: any
         : 0;
 
     return {
-        totalSessions: sessions.length,
+        totalSessions: uniqueVisitorSet.size,
         totalPageViews: pageViews.length,
         avgDuration,
         dailyVisitors,
