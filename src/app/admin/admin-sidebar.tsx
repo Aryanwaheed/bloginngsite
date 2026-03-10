@@ -14,7 +14,7 @@ const navItems = [
   { href: "/admin/analytics", label: "Analytics", icon: BarChart2 },
   { href: "/admin/jobs", label: "Jobs", icon: Briefcase },
   { href: "/admin/applications", label: "Applications", icon: Users },
-  { href: "/admin/characters", label: "AI Characters", icon: Bot },
+  { href: "/admin/characters", label: "Life Guiders", icon: Bot },
   { href: "/admin/ads", label: "Ad Placements", icon: Megaphone },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
@@ -56,8 +56,8 @@ export default function AdminSidebar() {
                 key={item.href}
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${isActive
-                    ? "bg-[#1A56DB] text-white"
-                    : "text-gray-400 hover:bg-[#1F2937] hover:text-white"
+                  ? "bg-[#1A56DB] text-white"
+                  : "text-gray-400 hover:bg-[#1F2937] hover:text-white"
                   }`}
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />

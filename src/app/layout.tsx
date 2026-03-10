@@ -9,8 +9,8 @@ import AnalyticsTracker from "@/components/analytics-tracker";
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta" });
 
 export const metadata: Metadata = {
-  title: "WorkHub - Jobs & AI Characters",
-  description: "Find your next job or chat with AI virtual characters",
+  title: "WorkHub - Jobs & Life Guider",
+  description: "Find your next job or chat with your own Life Guider",
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;

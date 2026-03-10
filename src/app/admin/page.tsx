@@ -18,7 +18,7 @@ export default async function AdminDashboard() {
   const stats = [
     { label: "Total Jobs", value: jobsCount ?? 0, color: "bg-blue-50 text-[#1A56DB]", emoji: "💼" },
     { label: "Applications", value: appsCount ?? 0, color: "bg-green-50 text-green-600", emoji: "📋" },
-    { label: "AI Characters", value: charsCount ?? 0, color: "bg-purple-50 text-purple-600", emoji: "🤖" },
+    { label: "Life Guiders", value: charsCount ?? 0, color: "bg-purple-50 text-purple-600", emoji: "🤖" },
   ];
 
   return (

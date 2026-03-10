@@ -39,9 +39,7 @@ export default async function Home() {
               <span className="text-[#1A56DB]">Connect.</span>{" "}
               <span className="text-[#F59E0B]">Chat.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#6B7280] max-w-2xl mx-auto leading-relaxed">
-              Browse hundreds of blue & white-collar jobs or engage with AI virtual characters for an immersive chat experience.
-            </p>
+            Browse hundreds of blue & white-collar jobs or engage with your own Life Guiders for an immersive chat experience.
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -76,7 +74,7 @@ export default async function Home() {
                 <div className="absolute inset-0 z-0">
                   <Image
                     src="/women-who-lead.png"
-                    alt="AI Characters Background"
+                    alt="Life Guider Background"
                     fill
                     className="object-cover opacity-100 transition-opacity duration-300 mix-blend-normal grayscale-0"
                   />
@@ -90,13 +88,13 @@ export default async function Home() {
                   <div className="w-14 h-14 bg-[#F59E0B] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-200/40">
                     <Bot className="w-7 h-7 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-3 drop-shadow-sm">AI Virtual Girl
-                    Characters</h2>
+                  <h2 className="text-2xl font-bold text-white mb-3 drop-shadow-sm">Your Own Life
+                    Guider</h2>
                   <div className="text-gray-300 mb-6 leading-relaxed font-medium drop-shadow-md block">
-                    Chat with unique AI personalities from around the world. Engaging, fun, and always available.
+                    Chat with unique personalities from around the world. Engaging, fun, and always available.
                   </div>
                   <div className="flex items-center gap-2 text-[#F59E0B] font-bold">
-                    Meet Characters
+                    Meet Your Life Guider
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -114,7 +112,7 @@ export default async function Home() {
               { value: "500+", label: "Jobs Listed", icon: Briefcase },
               { value: "10K+", label: "Active Users", icon: Users },
               { value: "8", label: "Job Categories", icon: Star },
-              { value: "8", label: "AI Characters", icon: Bot },
+              { value: "8", label: "Life Guiders", icon: Bot },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center gap-2">
                 <stat.icon className="w-5 h-5 text-[#1A56DB]" />

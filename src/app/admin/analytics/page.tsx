@@ -91,7 +91,7 @@ export default async function AnalyticsPage() {
     // ── Top content ──
     const topContent = [
         ...topJobs.map(j => ({ name: j.name, type: "Job", count: j.views })),
-        ...topCharacters.map(c => ({ name: c.name, type: "AI Character", count: c.sessions + c.messages })),
+        ...topCharacters.map(c => ({ name: c.name, type: "Life Guider", count: c.sessions + c.messages })),
     ].sort((a, b) => b.count - a.count).slice(0, 10);
 
     // ── Avg session duration ──

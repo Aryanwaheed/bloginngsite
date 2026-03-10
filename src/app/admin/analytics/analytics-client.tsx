@@ -216,7 +216,7 @@ export default function AnalyticsClient({ initialData }: { initialData: any }) {
 
             {/* ── Section 5: AI Chat Metrics ── */}
             <section>
-                <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">AI Chat Usage</h2>
+                <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">Life Guider Chat Usage</h2>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                     <StatCard label="Chat Sessions" value={data.chatSessions} icon={MessageCircle} color="bg-purple-50 text-purple-600" />
                     <StatCard label="User Messages" value={data.userMessages} icon={TrendingUp} color="bg-amber-50 text-amber-600" />
@@ -224,7 +224,7 @@ export default function AnalyticsClient({ initialData }: { initialData: any }) {
                 </div>
                 {data.topCharacters?.length > 0 && (
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h3 className="font-semibold text-gray-800 mb-4">Most Popular AI Characters</h3>
+                        <h3 className="font-semibold text-gray-800 mb-4">Most Popular Life Guiders</h3>
                         <ResponsiveContainer width="100%" height={220}>
                             <BarChart data={data.topCharacters} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" vertical={false} />
@@ -389,7 +389,7 @@ function processData(sessions: any[], events: any[], pageViews: any[], base: any
     // Top content (combined jobs + characters)
     const topContent = [
         ...topJobs.map(j => ({ name: j.name, type: "Job", count: j.views })),
-        ...topCharacters.map(c => ({ name: c.name, type: "AI Character", count: c.sessions + c.messages })),
+        ...topCharacters.map(c => ({ name: c.name, type: "Life Guider", count: c.sessions + c.messages })),
     ].sort((a, b) => b.count - a.count).slice(0, 10);
 
     // Avg session duration

@@ -13,7 +13,7 @@ export default function AIDisclosurePage() {
           </div>
           <div>
             <h1 className="text-4xl font-bold text-[#1C1917]">AI Disclosure</h1>
-            <p className="text-[#6B7280]">Important information about our AI characters</p>
+            <p className="text-[#6B7280]">Important information about our Life Guiders</p>
           </div>
         </div>
 
@@ -21,7 +21,7 @@ export default function AIDisclosurePage() {
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-10 flex gap-4">
           <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-amber-800 font-semibold text-sm mb-1">All characters on WorkHub are AI-generated</p>
+            <p className="text-amber-800 font-semibold text-sm mb-1">All Life Guiders on WorkHub are AI-generated</p>
             <p className="text-amber-700 text-sm leading-relaxed">They are not real people. Conversations are powered by artificial intelligence and do not represent the views of any real individual.</p>
           </div>
         </div>
@@ -30,8 +30,8 @@ export default function AIDisclosurePage() {
           {[
             {
               icon: <Bot className="w-5 h-5 text-[#1A56DB]" />,
-              title: "What are AI Virtual Characters?",
-              content: "Our AI virtual characters are computer-generated personas powered by large language models. Each character has been given a unique personality, background, and conversational style. However, they do not possess consciousness, feelings, or real experiences."
+              title: "What are Life Guiders?",
+              content: "Our Life Guiders are computer-generated personas powered by large language models. Each Life Guider has been given a unique personality, background, and conversational style. However, they do not possess consciousness, feelings, or real experiences."
             },
             {
               icon: <Info className="w-5 h-5 text-purple-500" />,
@@ -41,7 +41,7 @@ export default function AIDisclosurePage() {
             {
               icon: <AlertTriangle className="w-5 h-5 text-amber-500" />,
               title: "Important Limitations",
-              content: "AI characters cannot: provide medical, legal, or financial advice; verify information as factually accurate; form real emotional relationships; remember conversations between sessions (unless chat history is enabled); or represent real public figures or entities."
+              content: "Life Guiders cannot: provide medical, legal, or financial advice; verify information as factually accurate; form real emotional relationships; remember conversations between sessions (unless chat history is enabled); or represent real public figures or entities."
             },
             {
               icon: <Heart className="w-5 h-5 text-red-400" />,

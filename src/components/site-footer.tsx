@@ -13,15 +13,13 @@ export default function SiteFooter() {
               </div>
               <span className="font-bold text-xl text-white">WorkHub</span>
             </Link>
-            <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
-              Connecting people with opportunities. Find your next job or chat with AI virtual characters.
-            </p>
+            Connecting people with opportunities. Find your next job or chat with your own Life Guider.
           </div>
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm">Platform</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/jobs" className="hover:text-white transition-colors">Find Jobs</Link></li>
-              <li><Link href="/characters" className="hover:text-white transition-colors">AI Characters</Link></li>
+              <li><Link href="/characters" className="hover:text-white transition-colors">Life Guider</Link></li>
             </ul>
           </div>
           <div>
@@ -36,7 +34,7 @@ export default function SiteFooter() {
         </div>
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} WorkHub. All rights reserved.</p>
-          <p className="text-sm text-gray-500">AI characters are virtual and not real people. <Link href="/ai-disclosure" className="underline hover:text-white">AI Disclosure</Link></p>
+          <p className="text-sm text-gray-500">Life Guiders are virtual and not real people. <Link href="/ai-disclosure" className="underline hover:text-white">AI Disclosure</Link></p>
         </div>
       </div>
     </footer>
