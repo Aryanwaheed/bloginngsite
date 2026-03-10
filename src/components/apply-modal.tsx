@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Briefcase, X, ExternalLink, Loader2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import ApplyModalAd from "@/components/apply-modal-ad";
 
 interface Props {
   jobId: string;
@@ -68,14 +69,7 @@ export default function ApplyModal({ jobId, jobTitle, mobile, applyUrl }: Props)
             </p>
 
             {/* Ad Banner inside Modal */}
-            <div className="w-full bg-gradient-to-br from-indigo-50 to-blue-50 border border-blue-100 rounded-xl p-4 mb-6 flex flex-col items-center justify-center min-h-[120px] shadow-inner relative overflow-hidden">
-              <div className="absolute top-0 left-0 bg-blue-200/50 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-br-lg uppercase tracking-wider">
-                Advertisement
-              </div>
-              <div className="text-3xl mb-2">🚀</div>
-              <div className="font-semibold text-blue-900 text-sm text-center">Boost Your Career Today</div>
-              <div className="text-xs text-blue-700/80 text-center mt-1">Discover premium courses and certifications.</div>
-            </div>
+            <ApplyModalAd />
 
             <div className="flex items-center gap-3 text-sm font-medium text-[#1A56DB] bg-blue-50 py-2 px-4 rounded-full">
               <Loader2 className="w-4 h-4 animate-spin" />

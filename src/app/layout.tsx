@@ -46,6 +46,8 @@ export default function RootLayout({
             window.googletag = window.googletag || {cmd: []};
             googletag.cmd.push(function() {
               googletag.defineSlot('/23334616024/Displayads', [[300, 250], 'fluid', [250, 250], [336, 280]], 'div-gpt-ad-1772287373829-0').addService(googletag.pubads());
+              googletag.defineSlot('/23334616024/Displayads1', [[336, 280], 'fluid'], 'div-gpt-ad-1772472477296-0').addService(googletag.pubads());
+              googletag.defineSlot('/23334616024/Displayads1', [[336, 280], 'fluid'], 'div-gpt-ad-1773129246885-0').addService(googletag.pubads());
               googletag.pubads().enableSingleRequest();
               googletag.enableServices();
             });
