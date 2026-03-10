@@ -4,16 +4,16 @@ import { trackEvent } from "@/lib/analytics";
 
 export function TrackFindJobsClick({ children }: { children: React.ReactNode }) {
     return (
-        <span onClick={() => trackEvent("find_jobs_click").catch(() => { })}>
+        <div onClick={() => trackEvent("find_jobs_click").catch(() => { })}>
             {children}
-        </span>
+        </div>
     );
 }
 
 export function TrackCharacterSectionClick({ children }: { children: React.ReactNode }) {
     return (
-        <span onClick={() => trackEvent("character_section_click").catch(() => { })}>
+        <div onClick={() => trackEvent("character_section_click").catch(() => { })}>
             {children}
-        </span>
+        </div>
     );
 }
